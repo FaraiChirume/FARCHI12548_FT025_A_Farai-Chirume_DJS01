@@ -113,3 +113,11 @@ podcasts = [
     },
   ];
   
+    // Elements
+  const grid = document.getElementById("podcastGrid");
+  const modal = document.getElementById("podcastModal");
+  const modalBody = document.getElementById("modalBody");
+  const closeBtn = document.querySelector(".close");
+  const genreFilter = document.getElementById("genreFilter");
+  const sortFilter = document.getElementById("sortFilter");
+  
