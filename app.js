@@ -172,3 +172,28 @@ podcasts = [
   closeBtn.onclick = () => modal.classList.add("hidden");
   modal.onclick = e => { if (e.target === modal) modal.classList.add("hidden"); };
   
+
+   // Filters
+  function applyFilters() {
+    let filtered = [...podcasts];
+    const genre = genreFilter.value;
+    const sort = sortFilter.value;
+  
+    if (genre !== "all") {
+      filtered = filtered.filter(p => p.genres.includes(genre));
+    }
+  
+    if (sort === "recent") {
+      filtered.sort((a, b) => new Date(b.updated) - new Date(a.updated));
+    } else if (sort === "seasons") {
+      filtered.sort((a, b) => b.seasons - a.seasons);
+    }
+  
+    renderGrid(filtered);
+  }
+  
+  genreFilter.onchange = applyFilters;
+  sortFilter.onchange = applyFilters;
+  
+  // Init
+  applyFilters();
