@@ -121,7 +121,7 @@ podcasts = [
   const genreFilter = document.getElementById("genreFilter");
   const sortFilter = document.getElementById("sortFilter");
   
-  
+
     // Render podcast cards
   function renderGrid(list) {
     grid.innerHTML = "";
@@ -167,3 +167,8 @@ podcasts = [
       </div>
     `;
   }
+
+    // Close modal
+  closeBtn.onclick = () => modal.classList.add("hidden");
+  modal.onclick = e => { if (e.target === modal) modal.classList.add("hidden"); };
+  
