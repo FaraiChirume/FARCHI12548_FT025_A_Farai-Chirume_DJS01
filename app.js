@@ -112,7 +112,7 @@ podcasts = [
       ]
     },
   ];
-  
+
     // Elements
   const grid = document.getElementById("podcastGrid");
   const modal = document.getElementById("podcastModal");
@@ -121,3 +121,49 @@ podcasts = [
   const genreFilter = document.getElementById("genreFilter");
   const sortFilter = document.getElementById("sortFilter");
   
+  
+    // Render podcast cards
+  function renderGrid(list) {
+    grid.innerHTML = "";
+    list.forEach(p => {
+      const card = document.createElement("div");
+      card.className = "card";
+      card.innerHTML = `
+        <img src="${p.cover}" alt="cover">
+        <div class="title">${p.title}</div>
+        <div>${p.seasons} seasons</div>
+        <div class="tags">${p.genres.map(g => `<span class="tag">${g}</span>`).join("")}</div>
+        <small>Updated: ${new Date(p.updated).toDateString()}</small>
+      `;
+      card.onclick = () => openModal(p);
+      grid.appendChild(card);
+    });
+  }
+  
+  function openModal(p) {
+    modal.classList.remove("hidden");
+    modalBody.innerHTML = `
+      <div class="modal-header">
+        <img src="${p.cover}" alt="cover">
+        <div class="modal-details">
+          <h2>${p.title}</h2>
+          <p>${p.description}</p>
+          <div class="tags">${p.genres.map(g => `<span class="tag">${g}</span>`).join("")}</div>
+          <div class="updated">📅 Last updated: ${new Date(p.updated).toDateString()}</div>
+        </div>
+      </div>
+  
+      <div class="seasons">
+        <h3>Seasons</h3>
+        ${p.seasonList.map(s => `
+          <div class="season-item">
+            <div class="season-info">
+              <h4>${s.name}</h4>
+              <p>${s.desc}</p>
+            </div>
+            <div class="season-episodes">${s.episodes} episodes</div>
+          </div>
+        `).join("")}
+      </div>
+    `;
+  }
