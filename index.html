@@ -1,49 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>PodcastApp</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <header class="navbar">
-    <div class="logo">🎙️ PodcastApp</div>
-    <div class="search-profile">
-      <input type="text" placeholder="Search...">
-      <div class="profile">👤</div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PodcastApp</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="app-header">
+      <h1>🎙️ Podcast App</h1>
+    </header>
+
+    <main id="podcastGrid" class="grid"></main>
+
+    <!-- Modal -->
+    <div id="modal" class="modal hidden">
+      <div class="modal-content">
+        <div class="title-section">
+          <h2 id="modalTitle"></h2>
+          <button class="close-btn" id="closeModal">&times;</button>
+        </div>
+        <div class="banner">
+          <img id="modalImage" class="modal-img" />
+          <div class="info-section">
+            <h3>Description</h3>
+            <p id="modalDesc"></p>
+            <h3>Genres</h3>
+            <div id="modalGenres" class="tags"></div>
+            <p id="modalUpdated" class="modal-updated-text"></p>
+          </div>
+        </div>
+        <h3>Seasons</h3>
+        <ul id="seasonList" class="season-list"></ul>
+      </div>
     </div>
-  </header>
 
-  <main class="container">
-    <!-- Filters -->
-    <div class="filters">
-      <label>Filter by:
-        <select id="genreFilter">
-          <option value="all">All Genres</option>
-          <option value="Technology">Technology</option>
-          <option value="Business">Business</option>
-          <option value="Comedy">Comedy</option>
-          <option value="History">History</option>
-        </select>
-      </label>
-      <select id="sortFilter">
-        <option value="recent">Recently Updated</option>
-        <option value="seasons">Most Seasons</option>
-      </select>
-    </div>
-
-<!-- Podcast Grid -->
-<div id="podcastGrid" class="grid"></div>
-</main>
-
-<!-- Modal -->
-<div id="podcastModal" class="modal hidden">
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <div id="modalBody"></div>
-  </div>
-</div>
-
-<script src="app.js"></script>
-</body>
+    <script type="module" defer src="./src/index.js"></script>
+  </body>
 </html>
